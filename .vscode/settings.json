@@ -1,0 +1,16 @@
+{
+    "python.linting.enabled": false,
+    "python.linting.pylintArgs": [
+            "--rcfile",
+            "pylint.config",
+            "--disable",
+            "missing-docstring"
+    ],
+    "cSpell.words": [
+        "customtkinter",
+        "NAVERID",
+        "NAVERSECRET",
+        "sessionmaker",
+        "sqlalchemy"
+    ]
+}
