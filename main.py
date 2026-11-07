@@ -114,7 +114,7 @@ class GUI(Tk):
         image = np.array(image)
         target = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         target = cv2.threshold(target, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
-
+        #target = cv2.threshold(target, 100, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
         result = pytesseract.image_to_string(target, lang=self.config.lang)[:-1].strip()
 
         if self.config.vert:
@@ -217,9 +217,9 @@ async def main():
     
     gui = GUI(config=config)
 
-    keyboard.add_hotkey("ctrl+q", lambda : asyncio.run(gui.snapshot()))
-    keyboard.add_hotkey("ctrl+r", lambda : asyncio.run(gui.snapshot_repeat()))
-    keyboard.add_hotkey("ctrl+t", lambda : asyncio.run(gui.translate()))
+    keyboard.add_hotkey("shift+q", lambda : asyncio.run(gui.snapshot()))
+    keyboard.add_hotkey("shift+r", lambda : asyncio.run(gui.snapshot_repeat()))
+    keyboard.add_hotkey("shift+t", lambda : asyncio.run(gui.translate()))
     await gui.run()
     return
 
